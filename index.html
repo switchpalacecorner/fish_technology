@@ -56,7 +56,7 @@ function button(){
     fishcount += 1
     if(fishcount > 10){
     let text = document.getElementById("fishtext")
-        if(totalcSeconds / 60 > 10){
+        if(totalcSeconds / 60 > 10 && text.innerHTML == "fish"){
             text.innerHTML = "Excellent... but lets fish fishier next time"
             b.remove()
         }
