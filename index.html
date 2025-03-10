@@ -1,6 +1,7 @@
 <body onload="checkFish()">
-<h1>fish</h1>
+<h1 id="fishtext">fish</h1>
 <img id="bass" hidden src=/bass.JPG>
+<button style="width:60px;height:30px;" id="fishbutton" onclick="button()">fish</button>
 <h1>
 <marquee direction=down>tetris the fish master</marquee>
 <marquee direction=up>fishtris the absolute the fish master 2 plus</marquee>
@@ -9,10 +10,27 @@
 </h1>
 </body>
 <script>
+let fishcount = 0
 function checkFish(){
     if(Math.random() < .1){
         let bass = document.getElementById("bass")
         bass.removeAttribute("hidden");
     }
 }
+function button(){
+    let b = document.getElementById("fishbutton")
+    x_pos = Math.floor(Math.random()*1000)
+    y_pos = Math.floor(Math.random()*1000)
+    b.style.position = "absolute";
+    b.style.left = x_pos+'px';
+    b.style.top = y_pos+'px';
+    b.style.color = '#' + ('00000' + (Math.random() * 16777216 << 0).toString(16)).substr(-6);
+    fishcount += 1
+    if(fishcount > 10){
+        let text = document.getElementById("fishtext")
+        text.innerHTML = "YOU ARE FISH MASTER"
+    }
+    
+}
+
 </script>
