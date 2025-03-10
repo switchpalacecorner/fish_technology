@@ -16,11 +16,15 @@ function checkFish(){
         let bass = document.getElementById("bass")
         bass.removeAttribute("hidden");
     }
+    var marqs = document.body.getElementsByTagName("marquee");
+    for (let i = 0; i < marqs.length; i++) {
+        marqs[i].style.color = '#' + ('00000' + (Math.random() * 16777216 << 0).toString(16)).substr(-6);
+    }
 }
 function button(){
     let b = document.getElementById("fishbutton")
     x_pos = Math.floor(Math.random()*1000)
-    y_pos = Math.floor(Math.random()*1000)
+    y_pos = Math.floor(Math.random()*700)
     b.style.position = "absolute";
     b.style.left = x_pos+'px';
     b.style.top = y_pos+'px';
@@ -30,7 +34,10 @@ function button(){
         let text = document.getElementById("fishtext")
         text.innerHTML = "YOU ARE FISH MASTER"
     }
-    
+    if(fishcount > 100){
+        let text = document.getElementById("fishtext")
+        text.style.textDecoration = "underline"
+        text.style.color = "#FFA500"
+    }
 }
-
 </script>
