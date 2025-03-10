@@ -1,5 +1,6 @@
 <body onload="checkFish()">
 <h1 id="fishtext">fish</h1>
+<label id="minutes">00</label>:<label id="seconds">00</label>:<label id="cseconds">00</label>
 <img id="bass" hidden src=/bass.JPG>
 <button style="width:60px;height:30px;" id="fishbutton" onclick="button()">fish</button>
 <h1>
@@ -11,6 +12,29 @@
 </body>
 <script>
 let fishcount = 0
+
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var csecondsLabel = document.getElementById("cseconds");
+var totalcSeconds = 0;
+setInterval(setTime, 16);
+
+function setTime() {
+  ++totalcSeconds;
+  csecondsLabel.innerHTML = pad(totalcSeconds % 60);
+  secondsLabel.innerHTML = pad(totalcSeconds / 60);
+  minutesLabel.innerHTML = pad(parseInt(totalcSeconds / 60 / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
 function checkFish(){
     if(Math.random() < .1){
         let bass = document.getElementById("bass")
@@ -31,8 +55,15 @@ function button(){
     b.style.color = '#' + ('00000' + (Math.random() * 16777216 << 0).toString(16)).substr(-6);
     fishcount += 1
     if(fishcount > 10){
-        let text = document.getElementById("fishtext")
-        text.innerHTML = "YOU ARE FISH MASTER"
+    let text = document.getElementById("fishtext")
+        if(totalcSeconds / 60 > 10){
+            text.innerHTML = "Excellent... but lets fish fishier next time"
+            b.remove()
+        }
+        else{
+            let text = document.getElementById("fishtext")
+            text.innerHTML = "YOU ARE FISH MASTER"
+        }
     }
     if(fishcount > 100){
         let text = document.getElementById("fishtext")
