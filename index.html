@@ -1,7 +1,18 @@
+<body onload="checkFish()">
 <h1>fish</h1>
+<img id="bass" hidden src=/bass.JPG>
 <h1>
 <marquee direction=down>tetris the fish master</marquee>
 <marquee direction=up>fishtris the absolute the fish master 2 plus</marquee>
 <marquee direction=left>tetris the grand master 3: fish instinct</marquee>
 <marquee direction=right>tetris the grand master 4: fish eye</marquee>
 </h1>
+</body>
+<script>
+function checkFish(){
+    if(Math.random() < .1){
+        let bass = document.getElementById("bass")
+        bass.removeAttribute("hidden");
+    }
+}
+</script>
